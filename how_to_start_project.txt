@@ -1,0 +1,4 @@
+start the server by typing "node server.js" in the terminal
+initialize the coordinate.tx with y0-y0-0-0-0
+run the chessBot.c
+start playing your game 
