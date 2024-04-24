@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="battle.css" >
+    <title>chess</title>
+</head>
+<body>
+    <div id="rotate" style=" display:none; position:absolute; top:0; left:0; right:0; bottom:0; background:#760016; z-index:900;">
+        <img src="./assets/rotate.png" style="height:80px ; position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);"/>
+    </div>
+    <div id="main" >
+        <div id="haside" style=" background-color: rgba(127, 255, 212, 0.242); display:none; flex-direction: row; justify-content: space-around; gap: 20px; align-items: center; width: 100%; height: 20%;" >
+                <div>
+                    <h2 style="padding: 0; margin: 0;" >opponent</h2>
+                    <h3 style="padding: 0; margin: 4px 0;" >youssef fned<br><span>200 followers</span></h3>
+                    <button  id="btnf" class="aa1" >follow</button>
+                </div>
+                <div class="box" >
+                    <div class="content" >
+                        <img src="./assets/myPhoto.jpg"  >
+                    </div>
+                </div>
+        </div>
+        <!-- <div id="Laside"  >
+            <div style="margin:auto; width:95%; height:95%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px;" >
+                <h2>messages</h2>
+                <div id="messagesPC" >
+                    <div class="message opp" >hey how's it going</div>
+                    <div class="message self" >hey i'm doing great</div>
+                </div>
+                <div id="typeMsg" >
+                    <form id="sendFormPC" style=" display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                        <input id="inputMsgPC" placeholder="type a message" />
+                        <button id="sendBtnPC" style="border:none; background:rgba(255, 0, 0, 0);" ><img src="./assets/send.png" style="height:30px; cursor: pointer;" /></button>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        <div id="Maside" >
+            <div  id="win" style="z-index: 29; display: none; position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); width:60%; height: 20%; background-color: #005b76c9; border-radius: 20px; justify-content: center; align-items: center; "   >
+                <h2 id="winMessage" style=" font-size: 2em; font-weight: 600; text-align: center; color: rgb(0, 0, 0); " ></h2>
+            </div>
+          <!--######################################-->
+          <img src="./assets/message.png" id="getMessage" onclick="getmessage()" style=" display: none; position: absolute; left:10px; top:10px; width:50px;" />
+          <div id="messageBox" style=" position: absolute;  left:-97.5%;  transition: left 1s ; z-index: 30; background-color: #00766c75; border-radius: 20px; margin:auto; width:95%; height:95%; display: none; flex-direction: column; justify-content: center; align-items: center; gap: 30px;" >
+            <div  style=" width: 60%; display: flex; justify-content: space-between; align-items: center;"  ><h2>messages</h2>  <img id="delete" onclick="Delete()" src="./assets/delete.png" style="width:30px; height:30px;" />  </div>
+            <div id="messagesPH" >
+                <div class="message opp" >hey how's it going</div>
+                <div class="message self" >hey i'm doing great</div>
+            </div>
+            <div id="typeMsg" >
+                <form id="sendFormPH" style=" display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                    <input id="inputMsgPH" placeholder="type a message" />
+                    <button id="sendBtnPH" style="border:none; background:rgba(255, 0, 0, 0);" ><img src="./assets/send.png" style="height:30px; cursor: pointer;" /></button>
+                </form>
+            </div>
+        </div>
+          <!--######################################-->
+          <img  src="./assets/pawny.png" id="pawnIMG" onclick="showDead()" />
+          <div  id="death" >
+            <div id="deathy" ></div>
+            <div id="deathx" ></div>
+            <div></div>
+          </div>
+          <div id="promotion" >
+            <!-- <img src="./assets/rookx.png" />
+            <img src="./assets/queenx.png"  />
+            <img src="./assets/bishopx.png" />
+            <img src="./assets/knightx.png"  /> -->
+          </div>
+            <div class="container">
+                <div id="cube">
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!-- <div class="scene"  >
+                        <div class="shape cylinder-1 cyl-1" >
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cylinder-2 cyl-2">
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cylinder-3 cyl-3">
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cylinder-4 cyl-4">
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cylinder-5 cyl-5">
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cylinder-6 cyl-6">
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                            <div class="face side s0"></div>
+                            <div class="face side s1"></div>
+                            <div class="face side s2"></div>
+                            <div class="face side s3"></div>
+                            <div class="face side s4"></div>
+                            <div class="face side s5"></div>
+                            <div class="face side s6"></div>
+                            <div class="face side s7"></div>
+                            <div class="face side s8"></div>
+                            <div class="face side s9"></div>
+                            <div class="face side s10"></div>
+                            <div class="face side s11"></div>
+                            <div class="face side s12"></div>
+                            <div class="face side s13"></div>
+                          </div>
+                          <div class="shape cuboid-1 cub-1">
+                            <div class="face ft"></div>
+                            <div class="face bk"></div>
+                            <div class="face rt"></div>
+                            <div class="face lt"></div>
+                            <div class="face bm"></div>
+                            <div class="face tp"></div>
+                          </div>
+                    </div> -->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <div id="faceFront">
+                        <div id="boardHead" ></div>
+                        <div  style=" width:100%; height:calc( 100% - 2 * var(--board-gap)); display:flex; flex-direction:row; justify-content:center; align-items:center;" >
+                            <div id="boardLeft" ></div>
+                            <div id="boardGame" style="position: relative;" ></div>
+                            <div id="boardRight" ></div>
+                        </div>
+                        <div style="display:flex; align-items: center; justify-content: center;" id="boardFoot" ></div>
+                    </div>
+                    <div id="faceBottom" style="margin:auto; text-align:center; padding:10px; font-size: 1.5em;" >chess</div>
+                    <div id="faceBack" style="margin:auto; text-align:center; padding:10px; font-size: 1.5em;" ></div>
+                    <div id="faceTop" style="margin:auto; text-align:center; padding:10px; font-size: 1.5em;" >chess</div>
+                    <div id="faceLeft" style="margin:auto; text-align:center; padding:10px; font-size: 1.5em;" ></div>
+                    <div id="faceRight" style="margin:auto; text-align:center; padding:10px; font-size: 1.5em;" ></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="Raside"  >
+            <div id="opponent" >
+                <h2>opponent</h2>
+                <div class="box" >
+                    <div class="content" >
+                        <img src="./assets/myPhoto.jpg" id="img" >
+                        <h1>youssef fned<br><span>200 followers</span></h1>
+                        <button  id="a" class="a1" >follow</button>
+                    </div>
+                </div>
+            </div>
+            <div id="timer" >
+                <div class="opponentTMR"  >35:00</div>
+                <div class="selfTMR"  >35:00</div>
+            </div>
+        </div> -->
+        <!-- <div id="faside" style=" background-color: rgba(127, 255, 212, 0.242);  width: 100%; height: 10%; margin: auto;display: none;flex-direction: row;justify-content: center;align-items: center;gap: 20px;" >                
+            <div class="opponentTMR" id="opponentTMR" style="padding:10px 30px;" >35:00</div>
+            <div class="selfTMR" id="selfTMR" style="padding:10px 30px;" >35:00</div>
+        </div> -->
+    </div>
+    <script async  src="battle.js" ></script>
+    <!-- <script>
+        const messageBox=document.getElementById('messageBox');
+        var getmessage=()=>{
+          messageBox.style.left="2.5%";
+        }
+
+        var Delete=()=>{
+          messageBox.style.left='-97.5%';
+        }
+
+
+        var a=document.getElementById('a');
+        var state =false;
+        a.addEventListener('click',()=>{
+            state=!state
+            if(state){
+                a.classList.remove("a1");
+                a.classList.toggle("a2");
+                a.innerText='followed';
+            }else{
+                a.classList.remove("a2");
+                a.classList.toggle("a1");
+                a.innerText='follow';
+            }
+        });
+        a.addEventListener('mouseover',()=>{
+            if(state){
+                a.innerText='unfollow';
+            }
+        });
+        a.addEventListener('mouseout',()=>{
+            if(state){
+                a.innerText='followed';
+            }
+        });
+
+
+        var btnf=document.getElementById('btnf');
+        var state1 =false;
+        btnf.addEventListener('click',()=>{
+            state1=!state1
+            if(state1){
+                btnf.classList.remove("aa1");
+                btnf.classList.toggle("aa2");
+                btnf.innerText='followed';
+            }else{
+                btnf.classList.remove("aa2");
+                btnf.classList.toggle("aa1");
+                btnf.innerText='follow';
+            }
+        });
+        btnf.addEventListener('mouseover',()=>{
+            if(state1){
+                btnf.innerText='unfollow';
+            }
+        });
+        btnf.addEventListener('mouseout',()=>{
+            if(state1){
+                btnf.innerText='followed';
+            }
+        });
+    </script> -->
+</body>
+</html>
