@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <float.h>
-#include "chess.h"
+//#include "chess.h"
 // 1 : PAWN , 4 : ROOK , 3 : isKnight , 3 : BISHOP , 5 : QUEEN , 6 :  KING , 3 : BISHOP , 3 : isKnight , 4 : ROOK .
 #define pawn 1 
 #define knight 3
