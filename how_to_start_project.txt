@@ -2,3 +2,9 @@ start the server by typing "node server.js" in the terminal
 initialize the coordinate.tx with y0-y0-0-0-0
 run the chessBot.c
 start playing your game 
+
+### if you want just to play directly without the server , you should run the chessBot2.c , and the is how you play :
+you give the coordinate of the piece you want to move from which coordinate to what coordinate , e.g you want to play the pawn from e2 to e4 
+you should type e2-e4-0-0-0 , if the pawn reaches the top and you want to promote it as knight you should type for example
+e7-e8-(index of the piece , in our case knight so we type  3 )-(if the piece to be promoted is a knight you should type 1 , else 0 )-(1 if the game is over else 0)
+the result : e7-e8-3-1-0
